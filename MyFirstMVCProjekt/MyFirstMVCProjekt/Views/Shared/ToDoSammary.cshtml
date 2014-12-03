@@ -1,0 +1,67 @@
+﻿@model MyFirstMVCProjekt.Models.ToDoItem
+<a href="@Url.Action("Details",new {id = Model.ID})" class="NoHover">
+    <div class="row">
+
+        @if (Model != null)
+        {
+            string s = Model.Status;
+            switch (s)
+            {
+                case "Done":
+                    @:<div class="col-xs-4 col-md-4 col-md-offset-8">
+                break;
+
+                case "In progress":
+                @:<div class="col-xs-4 col-md-4 col-md-offset-4">
+                break;
+
+                case "Not started":
+                @:<div class="col-xs-4 col-md-4">
+                break;
+            }
+
+        }
+                      <div class="well">
+                              
+                          <span class="lead">Title: @Model.Title </span><br />
+                          @*ID: @Model.ID <br />*@
+                          Discription:<strong> @Model.Description</strong> <br />
+                          @if (Model.Status != null)
+                          {
+                              string s = Model.Status;
+                              switch (s)
+                              {
+                                  case "Done":
+                                      @:<span class="label label-success">Status: @Model.Status</span>
+                break;
+
+                                  case "In progress":
+                                  @:<span class="label label-primary">Status: @Model.Status</span>
+                break;
+
+                                  case "Not started":
+                                  @:<span class="label label-warning">Status: @Model.Status</span>
+                break;
+                              }
+
+                          }
+
+
+
+
+                          <br />
+
+                          @*<span class="badge">
+                              Created:  @Model.Date.ToShortDateString()
+                          </span>
+                          <br />
+                          <br />*@
+                          <a href=@Url.Action("Details", new { id = Model.ID }) class="btn btn-default btn-lg NoHover glyphicon glyphicon-zoom-in" role="button">Detail</a>
+
+                          <a href=@Url.Action("Edit", new { id = Model.ID }) class="btn btn-primary btn-lg NoHover glyphicon glyphicon-wrench" role="button">Edit</a>
+
+                          <a href=@Url.Action("Delete", new { id = Model.ID }) class="btn btn-danger btn-lg NoHover glyphicon glyphicon-floppy-remove" role="button">Delete</a>
+                      </div>
+    </div>
+</div>
+</a>

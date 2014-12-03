@@ -1,0 +1,12 @@
+﻿@model IEnumerable<MyFirstMVCProjekt.Models.ToDoItem>
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Curent User is: none</h2>
+@ViewBag.Testar
+@foreach (var item in Model)
+{
+    <h2>@item.ID @item.Title </h2> 
+    
+}

@@ -1,0 +1,40 @@
+﻿@model MyFirstMVCProjekt.Models.ToDoItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<p>
+    <div class="well">
+        <span class="lead">
+            @Html.DisplayNameFor(model => model.ID) :
+            @Html.DisplayFor(model => model.ID)<br />
+        </span>
+        <span class="pull-right label label-info">
+            @Html.DisplayNameFor(model => model.Date) :
+            @Html.DisplayFor(model => model.Date)
+        </span> 
+        <span class="lead">
+            @Html.DisplayNameFor(model => model.Title) :
+            @Html.DisplayFor(model => model.Title)<br />
+        </span>
+        <strong>
+            @Html.DisplayNameFor(model => model.Description) :
+            @Html.DisplayFor(model => model.Description)<br />
+        </strong>
+        <span class="pull-right label label-warning">
+            @Html.DisplayNameFor(model => model.Status) :
+            @Html.DisplayFor(model => model.Status)
+        </span> 
+        <br />
+
+        <a href=@Url.Action("Edit", new { id = Model.ID }) class="btn btn-primary btn-lg NoHover glyphicon glyphicon-wrench" role="button"> Edit</a>
+
+        <a href=@Url.Action("Delete", new { id = Model.ID }) class="btn btn-danger btn-lg NoHover glyphicon glyphicon-floppy-remove" role="button"> Delete</a>
+
+    </div>
+    
+
+</p>
+

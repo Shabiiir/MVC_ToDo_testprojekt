@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MyFirstMVCProjekt.Models.ToDoItem>
+@{
+    ViewBag.Title = "All Objects";
+}
+
+<h2>All objekts</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="pull-right">
+        @Html.DropDownList("Show", new List<SelectListItem> { new SelectListItem { Text = "Show all", Value = null }, new SelectListItem { Text = "Done", Value = "Done" }, new SelectListItem { Text = "In progress", Value = "In progress" }, new SelectListItem { Text = "Not started", Value = "Not started" } })
+        <input type="submit" class="glyphicon-ban-circle" value="Show" />
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="pull-right">
+        @Html.TextBox("SearchString")
+        <input type="submit" class="glyphicon-ban-circle" value="Search" />
+    </div>
+}
+    <button class="btn btn-info glyphicon glyphicon-plus-sign" onclick="location.href='@Url.Action("Create", "ToDoItem")'">
+       Create New
+    </button>
+    
+
+<div class="row">
+    <div class="col-xs-6 col-md-4 bg-danger">
+        <div class="Div-NotStarted">
+            not started
+        </div>
+     </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="Div-InProgress">
+            In progress
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+        <div class="Div-Done">
+            Done
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    @Html.Partial("ToDoSammary", item)
+}
+
